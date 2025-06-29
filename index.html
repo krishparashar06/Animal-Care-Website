@@ -1,0 +1,694 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐄 Animal Care Society Pushkar (Est. 2007)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #f39c12;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%2327ae60" width="1200" height="600"/><circle fill="%23f39c12" cx="300" cy="150" r="50"/><rect fill="%23e74c3c" x="800" y="400" width="200" height="100" rx="10"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .cta-button:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+        }
+
+        /* Products Section */
+        .products {
+            background: white;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .products-scroll {
+            display: flex;
+            overflow-x: auto;
+            gap: 1.5rem;
+            padding: 1rem 0;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .products-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .products-scroll::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .products-scroll::-webkit-scrollbar-thumb {
+            background: #3498db;
+            border-radius: 4px;
+        }
+
+        .products-scroll::-webkit-scrollbar-thumb:hover {
+            background: #2980b9;
+        }
+
+        .product-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            min-width: 280px;
+            flex-shrink: 0;
+            border: 2px solid transparent;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border-color: #3498db;
+        }
+
+        .cow-id {
+            background: #3498db;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+
+        .product-card p {
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+
+        .health-status {
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+            display: inline-block;
+        }
+
+        .health-status.healthy {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .health-status.treatment {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .health-status.minor {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .milk-yield {
+            background: #e7f3ff;
+            color: #0066cc;
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+            font-weight: bold;
+            margin: 0.5rem 0;
+            display: inline-block;
+        }
+
+        .temperament {
+            background: #f0f8ff;
+            color: #2c3e50;
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-style: italic;
+            margin: 0.5rem 0;
+            display: inline-block;
+        }
+
+        .scroll-indicator {
+            text-align: center;
+            margin-top: 1rem;
+            color: #666;
+            font-style: italic;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: #ecf0f1;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            background: #34495e;
+            aspect-ratio: 1;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        /* Events Section */
+        .events {
+            background: white;
+        }
+
+        .event-card {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .event-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Involvement Section */
+        .involvement {
+            background: #2c3e50;
+            color: white;
+        }
+
+        .involvement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .involvement-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .involvement-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.15);
+        }
+
+        /* Donate Section */
+        .donate {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            text-align: center;
+        }
+
+        .donate-options {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .donate-option {
+            background: rgba(255,255,255,0.2);
+            padding: 1.5rem;
+            border-radius: 10px;
+            min-width: 200px;
+            transition: background 0.3s;
+        }
+
+        .donate-option:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .donate-options {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .internship-badge {
+            background: #27ae60;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: inline-block;
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    🐄 Animal Care Society Pushkar
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Our Sacred Cows</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#events">Programs</a></li>
+                        <li><a href="#involvement">Internship</a></li>
+                        <li><a href="#donate">Support</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>🐄 Animal Care Society Pushkar</h1>
+            <p>Established 2007 • Badi Basti, Pushkar, Ajmer • Rural development through livestock care and community welfare • Reg. No. COOP/2022/AJMER/200942</p>
+            <a href="#donate" class="cta-button">Support Our Mission</a>
+        </div>
+    </section>
+
+    <section id="products" class="products">
+        <div class="container">
+            <h2 class="section-title">🐮 Our Sacred Cows</h2>
+            <p class="section-subtitle">Meet our beloved indigenous cows from various breeds, each contributing to our organic mission</p>
+            <div class="products-scroll">
+                <div class="product-card fade-in">
+                    <div class="cow-id">COW #1</div>
+                    <h3>Ganga</h3>
+                    <p><strong>Breed:</strong> Gir</p>
+                    <p><strong>Age:</strong> 4 years</p>
+                    <div class="health-status healthy">Healthy</div>
+                    <div class="milk-yield">8L/Daily</div>
+                    <div class="temperament">Calm</div>
+                </div>
+                <div class="product-card fade-in">
+                    <div class="cow-id">COW #2</div>
+                    <h3>Lakshmi</h3>
+                    <p><strong>Breed:</strong> Sahiwal</p>
+                    <p><strong>Age:</strong> 6 years</p>
+                    <div class="health-status treatment">Under Treatment</div>
+                    <div class="milk-yield">6L/Daily</div>
+                    <div class="temperament">Active</div>
+                </div>
+                <div class="product-card fade-in">
+                    <div class="cow-id">COW #3</div>
+                    <h3>Kamdhenu</h3>
+                    <p><strong>Breed:</strong> Red Sindhi</p>
+                    <p><strong>Age:</strong> 8 years</p>
+                    <div class="health-status healthy">Healthy</div>
+                    <div class="milk-yield">5L/Daily</div>
+                    <div class="temperament">Gentle</div>
+                </div>
+                <div class="product-card fade-in">
+                    <div class="cow-id">COW #4</div>
+                    <h3>Nandini</h3>
+                    <p><strong>Breed:</strong> Tharparkar</p>
+                    <p><strong>Age:</strong> 3 years</p>
+                    <div class="health-status healthy">Healthy</div>
+                    <div class="milk-yield">7L/Daily</div>
+                    <div class="temperament">Friendly</div>
+                </div>
+                <div class="product-card fade-in">
+                    <div class="cow-id">COW #5</div>
+                    <h3>Surabhi</h3>
+                    <p><strong>Breed:</strong> Rathi</p>
+                    <p><strong>Age:</strong> 5 years</p>
+                    <div class="health-status healthy">Healthy</div>
+                    <div class="milk-yield">6.5L/Daily</div>
+                    <div class="temperament">Calm</div>
+                </div>
+                <div class="product-card fade-in">
+                    <div class="cow-id">COW #6</div>
+                    <h3>Radha</h3>
+                    <p><strong>Breed:</strong> Haryana</p>
+                    <p><strong>Age:</strong> 2 years</p>
+                    <div class="health-status healthy">Healthy</div>
+                    <div class="milk-yield">4.5L/Daily</div>
+                    <div class="temperament">Shy</div>
+                </div>
+                <div class="product-card fade-in">
+                    <div class="cow-id">COW #7</div>
+                    <h3>Gauri</h3>
+                    <p><strong>Breed:</strong> Ongole</p>
+                    <p><strong>Age:</strong> 7 years</p>
+                    <div class="health-status minor">Minor Issues</div>
+                    <div class="milk-yield">5.5L/Daily</div>
+                    <div class="temperament">Calm</div>
+                </div>
+                <div class="product-card fade-in">
+                    <div class="cow-id">COW #8</div>
+                    <h3>Bhavani</h3>
+                    <p><strong>Breed:</strong> Malnad Gidda</p>
+                    <p><strong>Age:</strong> 1.5 years</p>
+                    <div class="health-status healthy">Healthy</div>
+                    <div class="milk-yield">2L/Daily</div>
+                    <div class="temperament">Playful</div>
+                </div>
+                <div class="product-card fade-in">
+                    <div class="cow-id">COW #9</div>
+                    <h3>Durga</h3>
+                    <p><strong>Breed:</strong> Kankrej</p>
+                    <p><strong>Age:</strong> 9 years</p>
+                    <div class="health-status healthy">Healthy</div>
+                    <div class="milk-yield">7L/Daily</div>
+                    <div class="temperament">Assertive</div>
+                </div>
+                <div class="product-card fade-in">
+                    <div class="cow-id">COW #10</div>
+                    <h3>Meera</h3>
+                    <p><strong>Breed:</strong> Krishna Valley</p>
+                    <p><strong>Age:</strong> 3.5 years</p>
+                    <div class="health-status healthy">Healthy</div>
+                    <div class="milk-yield">6.8L/Daily</div>
+                    <div class="temperament">Gentle</div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <span>← Scroll to see more cows →</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2 class="section-title">📷 Rural Development Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">Cattle Health Management</div>
+                <div class="gallery-item">Feed & Hygiene Maintenance</div>
+                <div class="gallery-item">Livestock Documentation</div>
+                <div class="gallery-item">Community Outreach Program</div>
+                <div class="gallery-item">Rural Veterinary Care</div>
+                <div class="gallery-item">Animal Welfare Training</div>
+                <div class="gallery-item">Field Team Operations</div>
+                <div class="gallery-item">Awareness Drives</div>
+                <div class="gallery-item">Rural Healthcare Support</div>
+                <div class="gallery-item">Internship Activities</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="events" class="events">
+        <div class="container">
+            <h2 class="section-title">📋 Rural Development Programs</h2>
+            <div class="event-card fade-in">
+                <h3>Cattle Health Management</h3>
+                <p>Comprehensive healthcare support for rural livestock including health monitoring, feed management, and hygiene maintenance through collaborative field team initiatives.</p>
+            </div>
+            <div class="event-card fade-in">
+                <h3>Community Awareness Drives</h3>
+                <p>Educational programs focused on animal welfare, livestock care practices, and rural development initiatives to strengthen community engagement and knowledge sharing.</p>
+            </div>
+            <div class="event-card fade-in">
+                <h3>Rural Livestock Documentation</h3>
+                <p>Systematic documentation and management of rural livestock practices, providing valuable exposure to grassroots operations and meaningful contribution to rural communities.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="involvement" class="involvement">
+        <div class="container">
+            <h2 class="section-title">🎓 Rural Internship Program</h2>
+            <div class="involvement-grid">
+                <div class="involvement-card fade-in">
+                    <h3>Field Experience</h3>
+                    <div class="internship-badge">2-Month Program</div>
+                    <p>Hands-on experience in rural settings supporting cattle health management, feed and hygiene maintenance, and community outreach programs.</p>
+                </div>
+                <div class="involvement-card fade-in">
+                    <h3>Collaborative Initiative</h3>
+                    <div class="internship-badge">University Partnership</div>
+                    <p>University students gain valuable grassroots-level operations experience while contributing meaningfully to rural community development.</p>
+                </div>
+                <div class="involvement-card fade-in">
+                    <h3>Animal Welfare Focus</h3>
+                    <div class="internship-badge">Livestock Care</div>
+                    <p>Specialized training in welfare and management of cows in underserved areas, promoting sustainable rural development practices.</p>
+                </div>
+                <div class="involvement-card fade-in">
+                    <h3>Contact Information</h3>
+                    <div class="internship-badge">Get Connected</div>
+                    <p>📧 animalcarepushkar@gmail.com<br>📱 9001570702, 8769844508<br>📍 Badi Basti, Pushkar, Ajmer - 305022</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="donate" class="donate">
+        <div class="container">
+            <h2 class="section-title">🤝 Support Rural Development</h2>
+            <p>Partner with us in our mission to improve rural livestock care and community welfare</p>
+            <div class="donate-options">
+                <div class="donate-option">
+                    <h3>Program Support</h3>
+                    <p>Fund rural development initiatives and animal welfare programs</p>
+                </div>
+                <div class="donate-option">
+                    <h3>Internship Sponsorship</h3>
+                    <p>Support university students in gaining rural experience</p>
+                </div>
+                <div class="donate-option">
+                    <h3>Community Partnership</h3>
+                    <p>Collaborate on sustainable rural development projects</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Animal Care Society Pushkar. Established 2007. Registration: COOP/2022/AJMER/200942</p>
+            <p>Dedicated to rural development, livestock care, and community welfare in Rajasthan</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.product-card, .event-card, .involvement-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Gallery item click interaction
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', () => {
+                item.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    item.style.transform = 'scale(1.05)';
+                }, 150);
+            });
+        });
+    </script>
+</body>
+</html>
